@@ -1,0 +1,271 @@
+{
+  "info": {
+    "_postman_id": "ecoclean-microservices-collection",
+    "name": "EcoClean Smart Waste Microservices API",
+    "description": "Complete Postman collection for EcoClean API Gateway and Microservices",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8080",
+      "type": "string"
+    },
+    {
+      "key": "adminToken",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "driverToken",
+      "value": "",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "1. Admin Login",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"email\": \"admin@ecoclean.com\",\n  \"password\": \"admin123\",\n  \"role\": \"admin\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/auth/login",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "auth", "login"]
+        }
+      }
+    },
+    {
+      "name": "2. Driver Registration",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Suresh Patel\",\n  \"email\": \"suresh@gmail.com\",\n  \"password\": \"suresh123\",\n  \"phone\": \"9876543211\",\n  \"vehicle\": \"Truck #T-108\",\n  \"vehicleId\": \"VH-008\",\n  \"shift\": \"Morning\",\n  \"licenseNumber\": \"CDL-774411\",\n  \"address\": \"102 Green St\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/auth/register-driver",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "auth", "register-driver"]
+        }
+      }
+    },
+    {
+      "name": "3. Get Pending Drivers (Admin Only)",
+      "request": {
+        "method": "GET",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{adminToken}}" }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/auth/admin/drivers/pending",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "auth", "admin", "drivers", "pending"]
+        }
+      }
+    },
+    {
+      "name": "4. Approve Driver (Admin Only)",
+      "request": {
+        "method": "PUT",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{adminToken}}" }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/auth/admin/drivers/4/approve",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "auth", "admin", "drivers", "4", "approve"]
+        }
+      }
+    },
+    {
+      "name": "5. Driver Login",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"email\": \"driver@ecoclean.com\",\n  \"password\": \"driver123\",\n  \"role\": \"driver\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/auth/login",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "auth", "login"]
+        }
+      }
+    },
+    {
+      "name": "6. Get All Bins",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/bins",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "bins"]
+        }
+      }
+    },
+    {
+      "name": "7. Get Single Bin by ID",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/bins/BIN-001",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "bins", "BIN-001"]
+        }
+      }
+    },
+    {
+      "name": "8. Get Bin Telemetry History",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/bins/BIN-001/telemetry",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "bins", "BIN-001", "telemetry"]
+        }
+      }
+    },
+    {
+      "name": "9. Create Pickup Collection",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"binId\": \"BIN-001\",\n  \"priority\": \"Critical\",\n  \"date\": \"2026-09-20\",\n  \"time\": \"14:00\",\n  \"notes\": \"Immediate overflow mitigation\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/collections",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "collections"]
+        }
+      }
+    },
+    {
+      "name": "10. Assign Driver to Collection",
+      "request": {
+        "method": "PUT",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"driverId\": \"DRV-001\",\n  \"driverName\": \"James Wilson\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/collections/COL-001/assign-driver",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "collections", "COL-001", "assign-driver"]
+        }
+      }
+    },
+    {
+      "name": "11. Start Collection (Driver)",
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/collections/COL-001/start",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "collections", "COL-001", "start"]
+        }
+      }
+    },
+    {
+      "name": "12. Complete Collection (Driver)",
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/collections/COL-001/complete",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "collections", "COL-001", "complete"]
+        }
+      }
+    },
+    {
+      "name": "13. Get System Notifications",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/notifications",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "notifications"]
+        }
+      }
+    },
+    {
+      "name": "14. Generate Optimized Route",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"driverId\": \"DRV-001\",\n  \"driverName\": \"James Wilson\",\n  \"vehicle\": \"Truck #T-101 (Ford F-650)\",\n  \"binIds\": [\"BIN-001\", \"BIN-005\", \"BIN-009\", \"BIN-012\"]\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/routes/optimize",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "routes", "optimize"]
+        }
+      }
+    },
+    {
+      "name": "15. Get All Routes",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/routes",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "routes"]
+        }
+      }
+    },
+    {
+      "name": "16. Start Route",
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/routes/RT-001/start",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "routes", "RT-001", "start"]
+        }
+      }
+    },
+    {
+      "name": "17. Complete Route",
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/routes/RT-001/complete",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "routes", "RT-001", "complete"]
+        }
+      }
+    }
+  ]
+}

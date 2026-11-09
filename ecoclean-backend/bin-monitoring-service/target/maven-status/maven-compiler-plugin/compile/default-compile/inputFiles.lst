@@ -1,0 +1,15 @@
+C:\Users\saina\OneDrive\Desktop\Soaproject37\ecoclean-backend\bin-monitoring-service\src\main\java\com\ecoclean\bin\BinMonitoringServiceApplication.java
+C:\Users\saina\OneDrive\Desktop\Soaproject37\ecoclean-backend\bin-monitoring-service\src\main\java\com\ecoclean\bin\client\NotificationClient.java
+C:\Users\saina\OneDrive\Desktop\Soaproject37\ecoclean-backend\bin-monitoring-service\src\main\java\com\ecoclean\bin\config\BinDataInitializer.java
+C:\Users\saina\OneDrive\Desktop\Soaproject37\ecoclean-backend\bin-monitoring-service\src\main\java\com\ecoclean\bin\controller\BinController.java
+C:\Users\saina\OneDrive\Desktop\Soaproject37\ecoclean-backend\bin-monitoring-service\src\main\java\com\ecoclean\bin\dto\BinRequest.java
+C:\Users\saina\OneDrive\Desktop\Soaproject37\ecoclean-backend\bin-monitoring-service\src\main\java\com\ecoclean\bin\dto\BinResponse.java
+C:\Users\saina\OneDrive\Desktop\Soaproject37\ecoclean-backend\bin-monitoring-service\src\main\java\com\ecoclean\bin\dto\BinStatistics.java
+C:\Users\saina\OneDrive\Desktop\Soaproject37\ecoclean-backend\bin-monitoring-service\src\main\java\com\ecoclean\bin\dto\NotificationEvent.java
+C:\Users\saina\OneDrive\Desktop\Soaproject37\ecoclean-backend\bin-monitoring-service\src\main\java\com\ecoclean\bin\dto\TelemetryResponse.java
+C:\Users\saina\OneDrive\Desktop\Soaproject37\ecoclean-backend\bin-monitoring-service\src\main\java\com\ecoclean\bin\entity\Bin.java
+C:\Users\saina\OneDrive\Desktop\Soaproject37\ecoclean-backend\bin-monitoring-service\src\main\java\com\ecoclean\bin\entity\Telemetry.java
+C:\Users\saina\OneDrive\Desktop\Soaproject37\ecoclean-backend\bin-monitoring-service\src\main\java\com\ecoclean\bin\repository\BinRepository.java
+C:\Users\saina\OneDrive\Desktop\Soaproject37\ecoclean-backend\bin-monitoring-service\src\main\java\com\ecoclean\bin\repository\TelemetryRepository.java
+C:\Users\saina\OneDrive\Desktop\Soaproject37\ecoclean-backend\bin-monitoring-service\src\main\java\com\ecoclean\bin\service\BinService.java
+C:\Users\saina\OneDrive\Desktop\Soaproject37\ecoclean-backend\bin-monitoring-service\src\main\java\com\ecoclean\bin\service\TelemetrySimulator.java

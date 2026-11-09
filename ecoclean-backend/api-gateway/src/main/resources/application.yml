@@ -1,0 +1,52 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: API-GATEWAY
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+          lower-case-service-id: true
+      routes:
+        - id: auth-service
+          uri: lb://AUTH-SERVICE
+          predicates:
+            - Path=/api/auth/**
+
+        - id: bin-monitoring-service
+          uri: lb://BIN-MONITORING-SERVICE
+          predicates:
+            - Path=/api/bins/**
+
+        - id: collection-service
+          uri: lb://COLLECTION-SERVICE
+          predicates:
+            - Path=/api/collections/**
+
+        - id: route-optimization-service
+          uri: lb://ROUTE-OPTIMIZATION-SERVICE
+          predicates:
+            - Path=/api/routes/**
+
+        - id: notification-service
+          uri: lb://NOTIFICATION-SERVICE
+          predicates:
+            - Path=/api/notifications/**
+
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    service-url:
+      defaultZone: http://localhost:8762/eureka/
+    fetch-registry: true
+    register-with-eureka: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,gateway
